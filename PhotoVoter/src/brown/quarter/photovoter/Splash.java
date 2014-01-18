@@ -153,7 +153,7 @@ public class Splash extends Activity {
     	startActivity(new Intent(this, Swipe.class));
     }
     
-    public void onScanButtonClicked(View view) {
+    public void onGoClicked(View view) {
     	final EditText input = new EditText(this);
     	new AlertDialog.Builder(this)
 		  .setTitle("Welcome")

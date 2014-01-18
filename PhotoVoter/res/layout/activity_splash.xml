@@ -16,7 +16,7 @@
          android:fitsSystemWindows.
     -->
 
-    <Button
+    <TextView
         android:id="@+id/fullscreen_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,9 +26,14 @@
         android:text="PhotoVoter"
         android:textColor="#33b5e5"
         android:textSize="50sp"
-        android:textStyle="bold" 
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:onClick="onGoClicked"
-        android:background="@android:color/transparent"
-        />
+        android:focusableInTouchMode="false"
+        android:background="@android:color/transparent" />
 
 </FrameLayout>
