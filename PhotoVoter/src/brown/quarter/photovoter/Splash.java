@@ -4,11 +4,13 @@ import brown.quarter.photovoter.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.*;
+import android.widget.*;
+import android.text.Editable;
+import android.view.*;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -53,6 +55,7 @@ public class Splash extends Activity {
 
         final View contentView = findViewById(R.id.fullscreen_content);
 
+        
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
         mSystemUiHider = SystemUiHider.getInstance(this, contentView, HIDER_FLAGS);
@@ -146,10 +149,23 @@ public class Splash extends Activity {
         }
     };
 
-    /**
-     * Schedules a call to hide() in [delay] milliseconds, canceling any
-     * previously scheduled calls.
-     */
+    public void startSwipe(){
+    	startActivity(new Intent(this, Swipe.class));
+    }
+    
+    public void onScanButtonClicked(View view) {
+    	final EditText input = new EditText(this);
+    	new AlertDialog.Builder(this)
+		  .setTitle("Welcome")
+		  .setMessage("Please Enter Your Event Key")
+		  .setView(input)
+		  .setNeutralButton("GO", new DialogInterface.OnClickListener() {
+		        public void onClick(DialogInterface dialog, int which) { 
+		        	Editable value = input.getText();//USE THIS AS KEY
+		        	startSwipe();
+		        }})
+		  .show();
+	}
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
